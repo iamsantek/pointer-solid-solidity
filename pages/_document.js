@@ -12,14 +12,13 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body className='bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400'>
-          <Container className='max-w-3xl mx-auto'>
-            <Heading as='h1'>Solidity Keyboard Generator</Heading>
+        <body>
+          <Container centerContent p={6} margin={20} >
+            <Heading fontWeight='bold' fontSize={30}>Solidity Keyboard Generator</Heading>
             <Main />
           </Container>
           <Footer />
           <NextScript />
-
         </body>
       </Html>
     )

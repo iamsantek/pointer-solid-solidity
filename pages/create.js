@@ -12,16 +12,6 @@ export default function Create() {
 
     const keyboardsContract = getKeyboardsContract(ethereum);
 
-    const handleAccounts = (accounts) => {
-        if (accounts.length > 0) {
-            const account = accounts[0];
-            console.log('We have an authorized account: ', account);
-            setConnectedAccount(account);
-        } else {
-            console.log("No authorized accounts yet")
-        }
-    };
-
     const submitCreate = async (e) => {
         e.preventDefault();
 
@@ -37,8 +27,6 @@ export default function Create() {
             return;
         }
 
-        setMining(true);
-
         try {
             const createTxn = await keyboardsContract.create(keyboardKind, isPBT, filter)
             console.log('Create transaction started...', createTxn.hash)
@@ -48,7 +36,7 @@ export default function Create() {
 
             Router.push('/');
         } finally {
-            setMining(false);
+
         }
     }
 

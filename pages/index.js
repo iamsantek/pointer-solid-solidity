@@ -8,6 +8,7 @@ import { UserCircleIcon } from "@heroicons/react/solid"
 import getKeyboardsContract from "../utils/getKeyboardsContract"
 import { toast } from "react-hot-toast"
 import { useMetaMaskAccount } from "../components/meta-mask-account-provider"
+import { Box, Center, Container, Stack } from "@chakra-ui/react";
 
 export default function Home() {
   const { ethereum, connectedAccount, connectAccount } = useMetaMaskAccount();
@@ -23,7 +24,7 @@ export default function Home() {
       try {
         const keyboards = await keyboardsContract.getKeyboards();
         console.log('Retrieved keyboards...', keyboards)
-  
+
         setKeyboards(keyboards)
       } finally {
         setKeyboardsLoading(false);
@@ -40,7 +41,7 @@ export default function Home() {
         }
         await getKeyboards();
       })
-  
+
       keyboardsContract.on('TipSent', (recipient, amount) => {
         if (addressesEqual(recipient, connectedAccount)) {
           toast(`You received a tip of ${ethers.utils.formatEther(amount)} eth!`, { id: recipient + amount });
@@ -62,17 +63,19 @@ export default function Home() {
 
   if (keyboardsLoading) {
     return (
-      <div className="flex flex-col gap-4">
-        <PrimaryButton type="link" href="/create">Create a Keyboard!</PrimaryButton>
-        <p>Loading Keyboards...</p>
-      </div>
+      <Center>
+        <Box>
+          <PrimaryButton type="link" href="/create">Create a Keyboard!</PrimaryButton>
+          <p>Loading Keyboards...</p>
+        </Box>
+      </Center>
     )
   }
 
   if (keyboards.length > 0) {
     return (
-      <div className="flex flex-col gap-4">
-        <PrimaryButton type="link" href="/create">Create a Keyboard!</PrimaryButton>
+      <Stack gap={4}>
+        <Center><PrimaryButton type="link" href="/create">Create a Keyboard</PrimaryButton></Center>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 p-2">
           {keyboards.map(
             ([kind, isPBT, filter, owner], i) => (
@@ -88,7 +91,7 @@ export default function Home() {
             )
           )}
         </div>
-      </div>
+      </Stack>
     )
   }
 
