@@ -2,9 +2,13 @@
 
 This project is part of the [Pointer.gg](https://www.pointer.gg/) web3 development path.
 
-# Stack
+## Stack
 **Front**: React + Next.js   
 **Web3**: Hardhat + AlchemyAPI + Solidity
+
+## Demo
+
+The demo is available [here](https://keyboards-dispenser.santek.dev/).
 
 ## Requirements
 
