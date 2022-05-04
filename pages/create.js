@@ -2,6 +2,7 @@ import Router from "next/router";
 import { useState, useEffect } from "react";
 import PrimaryButton from "../components/primary-button";
 import getKeyboardsContract from "../utils/getKeyboardsContract";
+import { useMetaMaskAccount } from "../components/meta-mask-account-provider"
 
 export default function Create() {
     const { ethereum, connectedAccount, connectAccount } = useMetaMaskAccount();
@@ -20,18 +21,6 @@ export default function Create() {
             console.log("No authorized accounts yet")
         }
     };
-
-    const getConnectedAccount = async () => {
-        if (window.ethereum) {
-            setEthereum(window.ethereum);
-        }
-
-        if (ethereum) {
-            const accounts = await ethereum.request({ method: 'eth_accounts' });
-            handleAccounts(accounts);
-        }
-    };
-    useEffect(() => getConnectedAccount(), []);
 
     const submitCreate = async (e) => {
         e.preventDefault();
