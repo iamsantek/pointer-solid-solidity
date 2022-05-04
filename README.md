@@ -1,6 +1,6 @@
 # Keyboards dispenser
 
-This project is part of the [Pointer.gg](https://www.pointer.gg/) web3 development path.
+This project is part of the [Pointer.gg](https://www.pointer.gg/) web3 development path. Just for learning purposes, only works on Rinkeby network.
 
 ## Stack
 **Front**: React + Next.js   
