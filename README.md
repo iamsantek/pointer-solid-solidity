@@ -25,7 +25,7 @@ export RINKEBY_PRIVATE_KEY=<YOUR_PRIVATE_ETHEREUM_KEY>
 hardhat run script/deploy.js --network rinkeby
 ```
 4. Copy the printed address to the src/utils/getKeyboardsContract.js file.
-5. Copy the contracts/Keyboards.sol file to src/utils/Keyboards.sol
+5. Copy the generated artifacts/contracts/Keyboards.sol/Keyboards.json file to utils/Keyboards.json
 
 ## How to run locally
 
